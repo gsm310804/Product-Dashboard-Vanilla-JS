@@ -37,22 +37,30 @@ function displayProducts(products) {
   const productContainer = document.querySelector("#product-container");
   productContainer.innerHTML = "";
 
-  products.slice(0, 5).forEach((product) => {
+  const customProducts = [
+    { name: "High Back Bench", price: 89.99 },
+    { name: "Grey Leather Couch", price: 399.99 },
+    { name: "Accent Chair", price: 65.99 },
+    { name: "Wooden Round Table", price: 85.99 },
+    { name: "Dining Table", price: 169.99 }
+  ];
+
+  products.slice(0, 5).forEach((product, index) => {
     const card = document.createElement("div");
     card.classList.add("product-card");
 
     const productImage = document.createElement("img");
     productImage.src = product.fields.image[0].url;
-    productImage.alt = capitalizeWords(product.fields.name);
+    productImage.alt = customProducts[index].name;
 
     const productInfo = document.createElement("div");
     productInfo.classList.add("product-info");
 
     const productName = document.createElement("h3");
-    productName.textContent = capitalizeWords(product.fields.name);
+    productName.textContent = customProducts[index].name;
 
     const productPrice = document.createElement("p");
-    productPrice.textContent = `$${(product.fields.price / 100).toFixed(2)}`;
+    productPrice.textContent = `$${customProducts[index].price.toFixed(2)}`;
 
     productInfo.appendChild(productName);
     productInfo.appendChild(productPrice);
