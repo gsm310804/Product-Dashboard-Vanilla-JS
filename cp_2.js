@@ -1,13 +1,11 @@
 const apiURL = "https://www.course-api.com/javascript-store-products";
 
-// Capitalizes each word in the product name
 function capitalizeWords(text) {
   return text.replace(/\b\w/g, function(char) {
     return char.toUpperCase();
   });
 }
 
-// Uses fetch() with .then() and .catch()
 function fetchProductsThen() {
   fetch(apiURL)
     .then((response) => response.json())
@@ -21,7 +19,6 @@ function fetchProductsThen() {
     });
 }
 
-// Uses async/await with try/catch
 async function fetchProductsAsync() {
   try {
     const response = await fetch(apiURL);
@@ -32,7 +29,6 @@ async function fetchProductsAsync() {
   }
 }
 
-// Displays the first 5 products on the page
 function displayProducts(products) {
   const productContainer = document.querySelector("#product-container");
   productContainer.innerHTML = "";
@@ -72,11 +68,9 @@ function displayProducts(products) {
   });
 }
 
-// Reusable error handler
 function handleError(error) {
   console.log(`An error occurred: ${error.message}`);
 }
 
-// Call both functions
 fetchProductsThen();
 fetchProductsAsync();
